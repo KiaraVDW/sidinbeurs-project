@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Start";
+}
+
+<div class="p-4 p-lg-5 bg-white border rounded-3">
+    <h1 class="page-title">SID-in administratiesysteem</h1>
+    <p class="lead mb-4">Registreer opleidingsinteresses op de beursvloer en bekijk de resultaten in het marketingdashboard.</p>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <a class="btn btn-primary" asp-controller="Mobile" asp-action="Register" asp-route-visitorId="SID-2004" asp-route-firstName="Mila" asp-route-lastName="Dumont" asp-route-birthDate="2007-05-14" asp-route-school="College Ten Doorn" asp-route-studyArea="Humane wetenschappen">Demo QR-scan</a>
+        <a class="btn btn-outline-primary" asp-controller="Dashboard" asp-action="Interests">Marketingdashboard</a>
+        <a class="btn btn-outline-secondary" asp-controller="Admin" asp-action="Users">Admin</a>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="border rounded-3 p-3 h-100">
+                <h2 class="h5">Demo-accounts</h2>
+                <p class="mb-1"><strong>Exposant:</strong> expo@sidin.local / Expo123!</p>
+                <p class="mb-1"><strong>Marketing:</strong> marketing@sidin.local / Marketing123!</p>
+                <p class="mb-1"><strong>Teamlead:</strong> teamlead@sidin.local / Lead123!</p>
+                <p class="mb-0"><strong>Admin:</strong> admin@sidin.local / Admin123!</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="border rounded-3 p-3 h-100">
+                <h2 class="h5">Open API</h2>
+                <p><a href="/api/stats/most-chosen-program">Meest gekozen opleiding</a></p>
+                <p><a href="/api/stats/least-chosen-program">Minst gekozen opleiding</a></p>
+                <p class="mb-0"><a href="/api/stats/fair/by-name/antwerpen/visitor-count">Aantal studiekiezers voor beurs Antwerpen</a></p>
+            </div>
+        </div>
+    </div>
+</div>

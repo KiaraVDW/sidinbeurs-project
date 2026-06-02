@@ -1,0 +1,33 @@
+@model SidInBeurs.Controllers.CountsViewModel
+@{
+    ViewData["Title"] = "Aantallen";
+}
+
+<h1 class="h3 mb-3">Aantallen per opleiding en beurs</h1>
+<div class="table-responsive bg-white border rounded-3">
+    <table class="table table-striped align-middle mb-0">
+        <thead class="table-light">
+            <tr>
+                <th>Opleiding</th>
+                <th>Totaal</th>
+                @foreach (var fair in Model.Fairs)
+                {
+                    <th>@fair.Name</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.Rows)
+            {
+                <tr>
+                    <td><strong>@row.Program.Name</strong><br /><span class="text-muted">@row.Program.Faculty</span></td>
+                    <td><span class="badge text-bg-primary">@row.Total</span></td>
+                    @foreach (var fair in Model.Fairs)
+                    {
+                        <td>@row.PerFair[fair.Name]</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

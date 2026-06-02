@@ -1,0 +1,51 @@
+@model SidInBeurs.Controllers.InterestsViewModel
+@{
+    ViewData["Title"] = "Interesses per opleiding";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Interesses per opleiding</h1>
+</div>
+
+<form method="get" class="bg-white border rounded-3 p-3 mb-3">
+    <label for="programId" class="form-label">Opleiding</label>
+    <div class="input-group">
+        <select id="programId" name="programId" class="form-select">
+            @foreach (var program in Model.Programs)
+            {
+                <option value="@program.Id" selected="@(program.Id == Model.SelectedProgramId)">@program.Name</option>
+            }
+        </select>
+        <button class="btn btn-primary">Tonen</button>
+    </div>
+</form>
+
+<div class="table-responsive bg-white border rounded-3">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+            <tr>
+                <th>Studiekiezer</th>
+                <th>Bezoeker ID</th>
+                <th>Geboortedatum</th>
+                <th>School</th>
+                <th>Studiegebied</th>
+                <th>Beurs</th>
+                <th>Opmerking</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.Rows)
+            {
+                <tr>
+                    <td>@row.Visitor.FirstName @row.Visitor.LastName</td>
+                    <td>@row.Visitor.VisitorCode</td>
+                    <td>@row.Visitor.BirthDate</td>
+                    <td>@row.Visitor.CurrentSchool</td>
+                    <td>@row.Visitor.CurrentStudyArea</td>
+                    <td>@row.Fair.Name</td>
+                    <td>@row.Registration.Notes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

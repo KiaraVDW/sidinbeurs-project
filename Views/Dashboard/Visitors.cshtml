@@ -1,0 +1,38 @@
+@model List<SidInBeurs.Models.Visitor>
+@{
+    ViewData["Title"] = "Studiekiezers";
+}
+
+<h1 class="h3 mb-3">Studiekiezers beheren</h1>
+<form method="post" asp-action="DeleteVisitors">
+    <div class="table-responsive bg-white border rounded-3">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Selecteer</th>
+                    <th>Naam</th>
+                    <th>Bezoeker ID</th>
+                    <th>Geboortedatum</th>
+                    <th>School</th>
+                    <th>Studiegebied</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var visitor in Model)
+                {
+                    <tr>
+                        <td><input class="form-check-input" type="checkbox" name="selectedIds" value="@visitor.Id" /></td>
+                        <td>@visitor.FirstName @visitor.LastName</td>
+                        <td>@visitor.VisitorCode</td>
+                        <td>@visitor.BirthDate</td>
+                        <td>@visitor.CurrentSchool</td>
+                        <td>@visitor.CurrentStudyArea</td>
+                        <td><a class="btn btn-sm btn-outline-primary" asp-action="EditVisitor" asp-route-id="@visitor.Id">Aanpassen</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-danger mt-3" onclick="return confirm('Geselecteerde studiekiezers volledig verwijderen?')">Geselecteerden verwijderen</button>
+</form>

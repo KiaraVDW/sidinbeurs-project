@@ -1,0 +1,21 @@
+@model SidInBeurs.Controllers.CompleteInviteInput
+@{
+    ViewData["Title"] = "Registratie afronden";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <form method="post" class="bg-white border rounded-3 p-4">
+            <h1 class="h3 mb-3">Registratie afronden</h1>
+            <input type="hidden" asp-for="Token" />
+            <input type="hidden" asp-for="Email" />
+            <p class="text-muted">@Model.Email</p>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Nieuw wachtwoord</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary w-100">Registratie afronden</button>
+        </form>
+    </div>
+</div>

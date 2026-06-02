@@ -1,0 +1,67 @@
+@model SidInBeurs.Controllers.UsersViewModel
+@{
+    ViewData["Title"] = "Gebruikers";
+}
+
+<h1 class="h3 mb-3">Admin dashboard</h1>
+@if (TempData["InviteUrl"] is not null)
+{
+    <div class="alert alert-success">
+        Registratielink: <a href="@TempData["InviteUrl"]">@TempData["InviteUrl"]</a>
+    </div>
+}
+
+<div class="row g-3">
+    <div class="col-lg-4">
+        <form method="post" asp-action="CreateUser" class="bg-white border rounded-3 p-3">
+            <h2 class="h5">Gebruiker aanmaken</h2>
+            <div class="mb-2">
+                <label class="form-label">Naam</label>
+                <input name="DisplayName" class="form-control" required />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">E-mail</label>
+                <input name="Email" type="email" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Rol</label>
+                <select name="Role" class="form-select">
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+            </div>
+            <button class="btn btn-primary w-100">Aanmaken</button>
+        </form>
+    </div>
+    <div class="col-lg-8">
+        <div class="table-responsive bg-white border rounded-3">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Gebruiker</th>
+                        <th>Rol</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Users)
+                    {
+                        <tr>
+                            <td><strong>@user.DisplayName</strong><br /><span class="text-muted">@user.Email</span></td>
+                            <td>@user.Role</td>
+                            <td>@(user.IsActive ? "Actief" : "Uitnodiging open")</td>
+                            <td>
+                                <form method="post" asp-action="DeleteUser" asp-route-id="@user.Id">
+                                    <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Gebruiker verwijderen?')">Verwijderen</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

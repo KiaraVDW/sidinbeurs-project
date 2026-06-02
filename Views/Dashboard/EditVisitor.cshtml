@@ -1,0 +1,41 @@
+@model SidInBeurs.Models.Visitor
+@{
+    ViewData["Title"] = "Studiekiezer aanpassen";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <form method="post" class="bg-white border rounded-3 p-4">
+            <h1 class="h3 mb-3">Studiekiezer aanpassen</h1>
+            <input type="hidden" asp-for="Id" />
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="VisitorCode" class="form-label">Bezoeker ID</label>
+                    <input asp-for="VisitorCode" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="BirthDate" class="form-label">Geboortedatum</label>
+                    <input asp-for="BirthDate" type="date" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="FirstName" class="form-label">Voornaam</label>
+                    <input asp-for="FirstName" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="LastName" class="form-label">Achternaam</label>
+                    <input asp-for="LastName" class="form-control" />
+                </div>
+                <div class="col-12">
+                    <label asp-for="CurrentSchool" class="form-label">School</label>
+                    <input asp-for="CurrentSchool" class="form-control" />
+                </div>
+                <div class="col-12">
+                    <label asp-for="CurrentStudyArea" class="form-label">Studiegebied</label>
+                    <input asp-for="CurrentStudyArea" class="form-control" />
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3">Opslaan</button>
+            <a class="btn btn-link mt-3" asp-action="Visitors">Annuleren</a>
+        </form>
+    </div>
+</div>
