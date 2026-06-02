@@ -1,0 +1,12 @@
+services:
+  sidin:
+    build: .
+    container_name: sidin-beheer
+    ports:
+      - "8080:8080"
+    volumes:
+      - sidin-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  sidin-data:
